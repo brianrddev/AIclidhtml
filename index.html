@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AIclid - Inteligencia Artificial para la Salud</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+		<style>
+			:root {
+				--primary: #2979ff; /* Azul brillante: tono central */
+				--primary-dark: #1565c0; /* Azul más profundo: para hover o encabezados */
+				--secondary: #64b5f6; /* Azul claro: detalles secundarios */
+				--accent: #00bcd4; /* Azul cian: para resaltar */
+				--dark: #102a43; /* Azul gris oscuro: fondo o texto */
+				--light: #f4fafe; /* Azul muy claro / casi blanco: fondos */
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background-color: #fef6f9;
+				color: var(--dark);
+			}
+
+			.font-display {
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.gradient-bg {
+				background: linear-gradient(135deg, rgba(41, 121, 255, 0.1) 0%, rgba(100, 181, 246, 0.1) 100%);
+			}
+
+			.cell-pattern {
+				background-image: radial-gradient(circle, var(--secondary) 1px, transparent 1px);
+				background-size: 20px 20px;
+			}
+
+			.nav-link {
+				position: relative;
+			}
+
+			.nav-link:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 2px;
+				bottom: -2px;
+				left: 0;
+				background-color: var(--primary);
+				transition: width 0.3s ease;
+			}
+
+			.nav-link:hover:after {
+				width: 100%;
+			}
+
+			.card-hover {
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.card-hover:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 25px rgba(41, 121, 255, 0.2);
+			}
+
+			.pulse-animation {
+				animation: pulse 2s infinite;
+			}
+
+			@keyframes pulse {
+				0% {
+					box-shadow: 0 0 0 0 rgba(41, 121, 255, 0.4);
+				}
+				70% {
+					box-shadow: 0 0 0 10px rgba(41, 121, 255, 0);
+				}
+				100% {
+					box-shadow: 0 0 0 0 rgba(41, 121, 255, 0);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header/Navbar -->
+		<header class="bg-white shadow-sm sticky top-0 z-50">
+			<div class="container mx-auto px-6 py-4">
+				<div class="flex items-center justify-between">
+					<div class="flex items-center">
+						<div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+								/>
+							</svg>
+						</div>
+						<h1 class="font-display text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">AIclid</h1>
+					</div>
+
+					<nav class="hidden md:flex space-x-8">
+						<a href="#project" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Proyecto</a>
+						<a href="#dataset" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Dataset</a>
+						<a href="#yolo" class="nav-link text-gray-700 hover:text-blue-600 font-medium">YOLO</a>
+						<a href="#finetuning" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Fine-tuning</a>
+						<a href="#games" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Juegos</a>
+						<a href="#faq" class="nav-link text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
+					</nav>
+
+					<button class="md:hidden text-gray-700 focus:outline-none">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Hero Section -->
+		<section class="gradient-bg py-20">
+			<div class="container mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center">
+					<div class="md:w-1/2 mb-10 md:mb-0">
+						<h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+							Revolucionando la salud con <span class="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Inteligencia Artificial</span>
+						</h2>
+						<p class="text-lg text-gray-600 mb-8">
+							AIclid combina tecnologías avanzadas de visión por computadora con investigación médica para identificar y etiquetar células con precisión sin
+							precedentes.
+						</p>
+						<div class="flex space-x-4">
+							<a
+								href="#project"
+								class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:shadow-lg transition duration-300"
+								>Conoce más</a
+							>
+							<a href="#dataset" class="px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300"
+								>Explora datasets</a
+							>
+						</div>
+					</div>
+					<div class="md:w-1/2 relative">
+						<div class="relative z-10">
+							<div class="w-full h-96 overflow-hidden relative">
+								<!-- Capa de fondo difuso (gradiente) -->
+								<div
+									class="absolute top-1/2 left-1/2 border w-64 h-64 rounded-full bg-gradient-to-r from-blue-400 to-blue-300 opacity-80 blur-2xl transform -translate-x-1/2 -translate-y-1/2 z-0"
+								></div>
+
+								<!-- Capa con imagen de célula -->
+								<div
+									class="absolute bg-[url('neuron.png')] bg-no-repeat bg-contain top-1/2 left-1/2 w-96 h-96 transform -translate-x-1/2 -translate-y-1/2 z-10"
+								></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Project Section -->
+		<section id="project" class="py-20 bg-white">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<span class="text-blue-600 font-medium">Tecnología avanzada</span>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Proyecto AIclid</h2>
+					<p class="max-w-2xl mx-auto text-gray-600">
+						Nuestra plataforma utiliza algoritmos de última generación para el análisis y clasificación de células con aplicaciones en investigación médica y
+						diagnóstico.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="bg-gradient-to-b from-white to-blue-50 rounded-xl p-6 shadow-md card-hover">
+						<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-display text-xl font-bold text-gray-900 mb-2">Identificación precisa</h3>
+						<p class="text-gray-600">Algoritmos entrenados para reconocer y clasificar diferentes tipos de células con una precisión superior al 98%.</p>
+					</div>
+
+					<div class="bg-gradient-to-b from-white to-blue-50 rounded-xl p-6 shadow-md card-hover">
+						<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-display text-xl font-bold text-gray-900 mb-2">Etiquetado automático</h3>
+						<p class="text-gray-600">Sistema de anotación inteligente que reduce el tiempo de procesamiento de muestras en un 90%.</p>
+					</div>
+
+					<div class="bg-gradient-to-b from-white to-blue-50 rounded-xl p-6 shadow-md card-hover">
+						<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-display text-xl font-bold text-gray-900 mb-2">Interfaz intuitiva</h3>
+						<p class="text-gray-600">Plataforma accesible para investigadores y profesionales médicos sin necesidad de conocimientos técnicos avanzados.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Dataset Section -->
+		<section id="dataset" class="py-20 gradient-bg">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<span class="text-blue-600 font-medium">Recursos disponibles</span>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dataset AIclid</h2>
+					<p class="max-w-2xl mx-auto text-gray-600">Accede a nuestra colección de datasets anotados y herramientas para interactuar con los datos.</p>
+				</div>
+
+				<div class="bg-white rounded-xl shadow-xl overflow-hidden">
+					<div class="grid grid-cols-1 md:grid-cols-4 border-b border-gray-200">
+						<button class="py-4 px-6 font-medium text-blue-600 border-b-2 border-blue-600">Versiones</button>
+						<button class="py-4 px-6 font-medium text-gray-500 hover:text-blue-600">Navegar</button>
+						<button class="py-4 px-6 font-medium text-gray-500 hover:text-blue-600">Interactuar</button>
+						<button class="py-4 px-6 font-medium text-gray-500 hover:text-blue-600">Descargar</button>
+					</div>
+
+					<div class="p-6">
+						<h3 class="font-display text-xl font-bold text-gray-900 mb-4">Versiones del Dataset</h3>
+
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+							<div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition duration-300 card-hover">
+								<div class="flex items-center mb-4">
+									<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+										<span class="text-blue-600 font-medium">v1.0</span>
+									</div>
+									<span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs font-medium rounded-full">Estable</span>
+								</div>
+								<h4 class="font-medium text-gray-900 mb-2">Dataset básico</h4>
+								<p class="text-sm text-gray-600 mb-4">Primera versión con 10,000 imágenes anotadas de células sanguíneas.</p>
+								<div class="flex justify-between items-center">
+									<span class="text-xs text-gray-500">Publicado: 12/2023</span>
+									<button class="text-blue-600 text-sm font-medium hover:underline">Detalles</button>
+								</div>
+							</div>
+
+							<div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition duration-300 card-hover">
+								<div class="flex items-center mb-4">
+									<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+										<span class="text-blue-600 font-medium">v2.1</span>
+									</div>
+									<span class="px-2 py-1 bg-amber-100 text-amber-600 text-xs font-medium rounded-full">Beta</span>
+								</div>
+								<h4 class="font-medium text-gray-900 mb-2">Dataset extendido</h4>
+								<p class="text-sm text-gray-600 mb-4">25,000 imágenes con 15 categorías de células y tejidos.</p>
+								<div class="flex justify-between items-center">
+									<span class="text-xs text-gray-500">Publicado: 03/2024</span>
+									<button class="text-blue-600 text-sm font-medium hover:underline">Detalles</button>
+								</div>
+							</div>
+
+							<div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition duration-300 card-hover">
+								<div class="flex items-center mb-4">
+									<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+										<span class="text-blue-600 font-medium">v3.0</span>
+									</div>
+									<span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs font-medium rounded-full">Nuevo</span>
+								</div>
+								<h4 class="font-medium text-gray-900 mb-2">Dataset 3D</h4>
+								<p class="text-sm text-gray-600 mb-4">Primera versión con reconstrucciones 3D de estructuras celulares.</p>
+								<div class="flex justify-between items-center">
+									<span class="text-xs text-gray-500">Publicado: 06/2024</span>
+									<button class="text-blue-600 text-sm font-medium hover:underline">Detalles</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- YOLO Section -->
+		<section id="yolo" class="py-20 bg-white">
+			<div class="container mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center">
+					<div class="md:w-1/2 mb-10 md:mb-0">
+						<span class="text-blue-600 font-medium">Detección en tiempo real</span>
+						<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">YOLO en AIclid</h2>
+						<p class="text-gray-600 mb-6">
+							Implementamos versiones optimizadas de YOLO (You Only Look Once) para la detección rápida y precisa de células en imágenes microscópicas.
+						</p>
+
+						<div class="space-y-4">
+							<div class="flex items-start">
+								<div class="flex-shrink-0 mt-1">
+									<div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+										</svg>
+									</div>
+								</div>
+								<div class="ml-3">
+									<p class="text-gray-700">YOLOv5 optimizado para imágenes médicas</p>
+								</div>
+							</div>
+
+							<div class="flex items-start">
+								<div class="flex-shrink-0 mt-1">
+									<div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+										</svg>
+									</div>
+								</div>
+								<div class="ml-3">
+									<p class="text-gray-700">Modelos pre-entrenados disponibles</p>
+								</div>
+							</div>
+
+							<div class="flex items-start">
+								<div class="flex-shrink-0 mt-1">
+									<div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+										</svg>
+									</div>
+								</div>
+								<div class="ml-3">
+									<p class="text-gray-700">API para integración con sistemas existentes</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="md:w-1/2 md:pl-12">
+						<div class="relative">
+							<div class="w-full h-96 bg-gradient-to-br from-blue-50 to-blue-50 rounded-2xl shadow-lg overflow-hidden relative">
+								<div class="absolute inset-0 cell-pattern opacity-10"></div>
+								<div
+									class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-200 to-blue-200 opacity-20 blur-xl"
+								></div>
+
+								<div class="relative z-10 p-8 h-full flex flex-col">
+									<div class="flex items-center mb-6">
+										<div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+										<div class="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
+										<div class="w-3 h-3 rounded-full bg-green-500"></div>
+									</div>
+
+									<div class="bg-white rounded-lg shadow-sm p-4 flex-grow">
+										<div class="h-full border-2 border-dashed border-gray-200 rounded flex items-center justify-center">
+											<div class="text-center">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													class="h-12 w-12 text-blue-400 mx-auto mb-2"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke="currentColor"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														stroke-width="2"
+														d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+													/>
+												</svg>
+												<p class="text-sm text-gray-500">Arrastra una imagen microscópica aquí</p>
+												<p class="text-xs text-gray-400 mt-1">o haz clic para seleccionar</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="mt-4 flex justify-between">
+										<button class="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition duration-300">Analizar</button>
+										<button class="px-4 py-2 border border-gray-300 text-gray-700 text-sm rounded hover:bg-gray-50 transition duration-300">Ejemplo</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-blue-500 opacity-10"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Fine-tuning Sections -->
+		<section id="finetuning" class="py-20 gradient-bg">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<span class="text-blue-600 font-medium">Personalización avanzada</span>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Fine-tuning de modelos</h2>
+					<p class="max-w-2xl mx-auto text-gray-600">Adapta nuestros modelos a tus necesidades específicas con nuestras herramientas de fine-tuning.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- YOLO Fine-tuning -->
+					<div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+						<div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6">
+							<h3 class="font-display text-xl font-bold text-white">Fine-tuning YOLO</h3>
+						</div>
+						<div class="p-6">
+							<p class="text-gray-600 mb-6">Optimiza los modelos YOLO para tus datasets específicos con nuestra interfaz intuitiva.</p>
+
+							<div class="mb-6">
+								<div class="flex justify-between items-center mb-1">
+									<span class="text-sm font-medium text-gray-700">Facilidad de uso</span>
+									<span class="text-sm font-medium text-blue-600">85%</span>
+								</div>
+								<div class="w-full bg-gray-200 rounded-full h-2">
+									<div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+								</div>
+							</div>
+
+							<div class="mb-6">
+								<div class="flex justify-between items-center mb-1">
+									<span class="text-sm font-medium text-gray-700">Rendimiento</span>
+									<span class="text-sm font-medium text-blue-600">94%</span>
+								</div>
+								<div class="w-full bg-gray-200 rounded-full h-2">
+									<div class="bg-blue-600 h-2 rounded-full" style="width: 94%"></div>
+								</div>
+							</div>
+
+							<button class="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:shadow-lg transition duration-300">
+								Comenzar
+							</button>
+						</div>
+					</div>
+
+					<!-- U-Net Fine-tuning -->
+					<div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+						<div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6">
+							<h3 class="font-display text-xl font-bold text-white">Fine-tuning U-Net</h3>
+						</div>
+						<div class="p-6">
+							<p class="text-gray-600 mb-6">Adapta arquitecturas U-Net para segmentación precisa de células y estructuras subcelulares.</p>
+
+							<div class="mb-6">
+								<div class="flex justify-between items-center mb-1">
+									<span class="text-sm font-medium text-gray-700">Precisión</span>
+									<span class="text-sm font-medium text-blue-600">97%</span>
+								</div>
+								<div class="w-full bg-gray-200 rounded-full h-2">
+									<div class="bg-blue-600 h-2 rounded-full" style="width: 97%"></div>
+								</div>
+							</div>
+
+							<div class="mb-6">
+								<div class="flex justify-between items-center mb-1">
+									<span class="text-sm font-medium text-gray-700">Tiempo de entrenamiento</span>
+									<span class="text-sm font-medium text-blue-600">Optimizado</span>
+								</div>
+								<div class="w-full bg-gray-200 rounded-full h-2">
+									<div class="bg-blue-600 h-2 rounded-full" style="width: 78%"></div>
+								</div>
+							</div>
+
+							<button class="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:shadow-lg transition duration-300">
+								Comenzar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Games Section -->
+		<section id="games" class="py-20 bg-white">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<span class="text-blue-600 font-medium">Aprendizaje interactivo</span>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Juegos educativos</h2>
+					<p class="max-w-2xl mx-auto text-gray-600">Aprende sobre biología celular y IA a través de nuestros juegos interactivos.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover">
+						<div class="relative h-40 mb-6 rounded-lg overflow-hidden">
+							<div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-300 opacity-30"></div>
+							<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+									/>
+								</svg>
+								<p class="text-blue-600 font-medium mt-2">Identifica la célula</p>
+							</div>
+						</div>
+						<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Caza de células</h3>
+						<p class="text-sm text-gray-600 mb-4">Juego de reconocimiento rápido de diferentes tipos celulares.</p>
+						<button class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300">Jugar</button>
+					</div>
+
+					<div class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover">
+						<div class="relative h-40 mb-6 rounded-lg overflow-hidden">
+							<div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-300 opacity-30"></div>
+							<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+								<p class="text-blue-600 font-medium mt-2">Flujo de trabajo</p>
+							</div>
+						</div>
+						<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Laboratorio IA</h3>
+						<p class="text-sm text-gray-600 mb-4">Aprende el proceso de entrenamiento de modelos de IA paso a paso.</p>
+						<button class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300">Jugar</button>
+					</div>
+
+					<div class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover pulse-animation">
+						<div class="relative h-40 mb-6 rounded-lg overflow-hidden">
+							<div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-300 opacity-30"></div>
+							<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+								</svg>
+								<p class="text-blue-600 font-medium mt-2">Nuevo</p>
+							</div>
+						</div>
+						<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Carrera de etiquetas</h3>
+						<p class="text-sm text-gray-600 mb-4">Compite contra la IA para etiquetar células correctamente.</p>
+						<button class="w-full py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-medium rounded hover:shadow-lg transition duration-300">
+							Jugar ahora
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="py-20 gradient-bg">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<span class="text-blue-600 font-medium">¿Tienes preguntas?</span>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Preguntas frecuentes</h2>
+					<p class="max-w-2xl mx-auto text-gray-600">Aquí respondemos a las dudas más comunes sobre AIclid y sus funcionalidades.</p>
+				</div>
+
+				<div class="max-w-3xl mx-auto">
+					<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+						<div class="divide-y divide-gray-200">
+							<!-- FAQ Item 1 -->
+							<div class="p-6">
+								<button class="flex items-center justify-between w-full group focus:outline-none">
+									<h3 class="font-display font-medium text-gray-900 text-left">¿Cómo puedo acceder a los datasets de AIclid?</h3>
+									<div class="ml-4 flex-shrink-0">
+										<svg
+											class="h-6 w-6 text-blue-600 transform group-hover:rotate-180 transition duration-300"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+										</svg>
+									</div>
+								</button>
+								<div class="mt-2 text-gray-600">
+									<p>
+										Puedes acceder a nuestros datasets a través de la sección "Dataset" en nuestro sitio web. Los datasets básicos están disponibles para
+										descarga inmediata, mientras que las versiones completas requieren registro gratuito.
+									</p>
+								</div>
+							</div>
+
+							<!-- FAQ Item 2 -->
+							<div class="p-6">
+								<button class="flex items-center justify-between w-full group focus:outline-none">
+									<h3 class="font-display font-medium text-gray-900 text-left">¿Qué requisitos técnicos necesito para usar los modelos de AIclid?</h3>
+									<div class="ml-4 flex-shrink-0">
+										<svg
+											class="h-6 w-6 text-blue-600 transform group-hover:rotate-180 transition duration-300"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+										</svg>
+									</div>
+								</button>
+								<div class="mt-2 text-gray-600">
+									<p>
+										Nuestra plataforma web no requiere hardware especializado. Para ejecutar los modelos localmente, recomendamos un sistema con al menos 8GB de
+										RAM y una GPU compatible con CUDA para mejor rendimiento, aunque no es obligatorio.
+									</p>
+								</div>
+							</div>
+
+							<!-- FAQ Item 3 -->
+							<div class="p-6">
+								<button class="flex items-center justify-between w-full group focus:outline-none">
+									<h3 class="font-display font-medium text-gray-900 text-left">¿Puedo usar AIclid para investigación comercial?</h3>
+									<div class="ml-4 flex-shrink-0">
+										<svg
+											class="h-6 w-6 text-blue-600 transform group-hover:rotate-180 transition duration-300"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+										</svg>
+									</div>
+								</button>
+								<div class="mt-2 text-gray-600">
+									<p>
+										Sí, AIclid ofrece licencias comerciales para empresas e instituciones. Contáctanos a través de nuestro formulario para discutir las opciones
+										disponibles según tus necesidades específicas.
+									</p>
+								</div>
+							</div>
+
+							<!-- FAQ Item 4 -->
+							<div class="p-6">
+								<button class="flex items-center justify-between w-full group focus:outline-none">
+									<h3 class="font-display font-medium text-gray-900 text-left">¿Cómo contribuir al proyecto AIclid?</h3>
+									<div class="ml-4 flex-shrink-0">
+										<svg
+											class="h-6 w-6 text-blue-600 transform group-hover:rotate-180 transition duration-300"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+										</svg>
+									</div>
+								</button>
+								<div class="mt-2 text-gray-600">
+									<p>
+										Aceptamos contribuciones de varios tipos: desde investigadores que pueden compartir datasets anotados, hasta desarrolladores que quieran
+										colaborar en el código. Visita nuestra página de GitHub o contáctanos para más información.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="bg-gray-50 px-6 py-4">
+							<div class="text-center">
+								<p class="text-gray-600 mb-4">¿No encontraste lo que buscabas?</p>
+								<button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:shadow-lg transition duration-300">
+									Contactar al equipo
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900 text-white py-12">
+			<div class="container mx-auto px-6">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+					<div>
+						<div class="flex items-center mb-4">
+							<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+									/>
+								</svg>
+							</div>
+							<h3 class="font-display text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">AIclid</h3>
+						</div>
+						<p class="text-gray-400">Revolucionando la investigación médica a través de la inteligencia artificial y el aprendizaje automático.</p>
+					</div>
+
+					<div>
+						<h4 class="font-display font-bold text-lg text-white mb-4">Explorar</h4>
+						<ul class="space-y-2">
+							<li><a href="#project" class="text-gray-400 hover:text-blue-400 transition duration-300">Proyecto</a></li>
+							<li><a href="#dataset" class="text-gray-400 hover:text-blue-400 transition duration-300">Dataset</a></li>
+							<li><a href="#yolo" class="text-gray-400 hover:text-blue-400 transition duration-300">YOLO</a></li>
+							<li><a href="#finetuning" class="text-gray-400 hover:text-blue-400 transition duration-300">Fine-tuning</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 class="font-display font-bold text-lg text-white mb-4">Recursos</h4>
+						<ul class="space-y-2">
+							<li><a href="#games" class="text-gray-400 hover:text-blue-400 transition duration-300">Juegos</a></li>
+							<li><a href="#faq" class="text-gray-400 hover:text-blue-400 transition duration-300">FAQ</a></li>
+							<li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Documentación</a></li>
+							<li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Blog</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 class="font-display font-bold text-lg text-white mb-4">Contacto</h4>
+						<ul class="space-y-2">
+							<li class="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+									/>
+								</svg>
+								<span class="text-gray-400">contacto@aiclid.org</span>
+							</li>
+							<li class="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+									/>
+								</svg>
+								<span class="text-gray-400">Discord Community</span>
+							</li>
+							<li class="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+								</svg>
+								<span class="text-gray-400">GitHub</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+					<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 AIclid. Todos los derechos reservados.</p>
+					<div class="flex space-x-6">
+						<a href="#" class="text-gray-500 hover:text-blue-400 transition duration-300">
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+								/>
+							</svg>
+						</a>
+						<a href="#" class="text-gray-500 hover:text-blue-400 transition duration-300">
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+								/>
+							</svg>
+						</a>
+						<a href="#" class="text-gray-500 hover:text-blue-400 transition duration-300">
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+								/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Simple JavaScript for FAQ toggle functionality
+			document.querySelectorAll('#faq button').forEach((button) => {
+				button.addEventListener('click', () => {
+					const answer = button.nextElementSibling;
+					const icon = button.querySelector('svg');
+
+					if (answer.style.maxHeight) {
+						answer.style.maxHeight = null;
+						icon.classList.remove('rotate-180');
+					} else {
+						answer.style.maxHeight = answer.scrollHeight + 'px';
+						icon.classList.add('rotate-180');
+					}
+				});
+			});
+
+			// Mobile menu toggle would go here
+		</script>
+	</body>
+</html>
