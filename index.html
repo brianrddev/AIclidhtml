@@ -100,8 +100,9 @@
 </head>
 
 <body>
+
 	<!-- Header/Navbar -->
-	<header class="bg-white shadow-sm sticky top-0 z-50">
+	<header class="bg-white shadow-sm sticky top-0 z-50 mb-0">
 		<div class="container mx-auto px-6 py-4">
 			<div class="flex items-center justify-between">
 				<div class="flex items-center">
@@ -124,7 +125,6 @@
 					<a href="#yolo" class="nav-link text-gray-700 hover:text-blue-600 font-medium">YOLO</a>
 					<a href="#finetuning" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Fine-tuning</a>
 					<a href="#games" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Juegos</a>
-					<a href="#faq" class="nav-link text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
 				</nav>
 
 				<button class="md:hidden text-gray-700 focus:outline-none">
@@ -157,9 +157,10 @@
 						<a href="#project"
 							class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:shadow-lg transition duration-300">Conoce
 							más</a>
-						<a href="https://cifpzonzamas.org/aiclid/ia/list.html"
-							class="px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300">Explora
-							datasets</a>
+						<a href="https://cifpzonzamas.org/aiclid/ia/list.html" target="_blank"
+							class="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-extrabold rounded-xl shadow-xl hover:scale-110 hover:from-purple-700 hover:to-blue-600 transition-all duration-300 text-lg tracking-wide pulse-animation">
+							Explora datasets
+						</a>
 					</div>
 				</div>
 				<div class="md:w-1/2 relative">
@@ -167,12 +168,12 @@
 						<div class="w-full h-96 overflow-hidden relative">
 							<!-- Capa de fondo difuso (gradiente) -->
 							<div
-								class="absolute top-1/2 left-1/2 border w-64 h-64 rounded-full bg-gradient-to-r from-blue-400 to-blue-300 opacity-80 blur-2xl transform -translate-x-1/2 -translate-y-1/2 z-0">
+								class="absolute top-1/2 left-1/2 border w-64 h-64 rounded-full bg-gradient-to-r from-red-400 to-red-300 opacity-80 blur-2xl transform -translate-x-1/2 -translate-y-1/2 z-0">
 							</div>
 
 							<!-- Capa con imagen de célula -->
 							<div
-								class="absolute bg-[url('img/basofilo_normal1.png')] bg-no-repeat bg-contain top-1/2 left-1/2 w-96 h-96 transform -translate-x-1/2 -translate-y-1/2 z-10">
+								class="absolute bg-[url('img/redcell.avif')] bg-no-repeat bg-contain top-1/2 left-1/2 w-96 h-96 transform -translate-x-1/2 -translate-y-1/2 z-10">
 							</div>
 						</div>
 					</div>
@@ -247,7 +248,9 @@
 					En la siguiente web puedes ver las diferentes versiones de datasets que usamos para los
 					entrenamientos, con pequeñas descripciones y la posibilidad de visualizarlos:
 					<a href="https://cifpzonzamas.org/aiclid/ia/list.html" target="_blank"
-						class="text-blue-600 underline ml-1">Ver datasets</a>
+						class="inline-block px-8 py-4 bg-gradient-to-r mt-10 from-purple-600 to-blue-500 text-white font-extrabold rounded-xl shadow-xl hover:scale-110 hover:from-purple-700 hover:to-blue-600 transition-all duration-300 text-lg tracking-wide pulse-animation">
+						Explora datasets
+					</a>
 				</p>
 			</div>
 			<div
@@ -419,38 +422,42 @@
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 				<div
-					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center">
+					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center h-full">
 					<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Juego 1: Clasificación Celular</h3>
 					<p class="text-sm text-gray-600 mb-4 text-center">Identifica correctamente el tipo de célula
 						mostrado en pantalla. Mejora tu agudeza visual y tus conocimientos en morfología celular.</p>
+					<div class="flex-grow"></div>
 					<a href="https://cifpzonzamas.org/aiclid/juegos/juego1/" target="_blank"
-						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center">Jugar</a>
+						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center mt-4">Jugar</a>
 				</div>
 				<div
-					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center">
+					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center h-full">
 					<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Juego 2: Reto de Clasificación</h3>
 					<p class="text-sm text-gray-600 mb-4 text-center">Pon a prueba tu rapidez clasificando el mayor
 						número de células posible antes de que se acabe el tiempo. ¡Compite por la mejor puntuación!</p>
+					<div class="flex-grow"></div>
 					<a href="https://cifpzonzamas.org/aiclid/juegos/juego2/" target="_blank"
-						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center">Jugar</a>
+						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center mt-4">Jugar</a>
 				</div>
 				<div
-					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center">
+					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center h-full">
 					<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Juego 3: Memoria Celular</h3>
 					<p class="text-sm text-gray-600 mb-4 text-center">Ejercita tu memoria emparejando imágenes de
 						células iguales. Ideal para aprender a reconocer diferentes tipos celulares de forma divertida.
 					</p>
+					<div class="flex-grow"></div>
 					<a href="https://cifpzonzamas.org/aiclid/juegos/juego3/" target="_blank"
-						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center">Jugar</a>
+						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center mt-4">Jugar</a>
 				</div>
 				<div
-					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center">
-					<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Juego 4: Desafío IA</h3>
-					<p class="text-sm text-gray-600 mb-4 text-center">Interactúa con la inteligencia artificial para
-						resolver retos relacionados con la clasificación y detección de células. Aprende cómo la IA
-						puede ayudarte en el laboratorio.</p>
+					class="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-6 shadow-md card-hover flex flex-col items-center h-full">
+					<h3 class="font-display text-lg font-bold text-gray-900 mb-2">Juego 4: Caza Células</h3>
+					<p class="text-sm text-gray-600 mb-4 text-center">¡Bienvenido a Caza Células! Un juego retro donde
+						pilotas una nave y debes disparar únicamente a las células indicadas. Pon a prueba tu puntería y
+						tus conocimientos de biología celular mientras te diviertes en este desafío arcade.</p>
+					<div class="flex-grow"></div>
 					<a href="https://cifpzonzamas.org/aiclid/juegos/juego4/" target="_blank"
-						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center">Jugar</a>
+						class="w-full py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-50 transition duration-300 text-center mt-4">Jugar</a>
 				</div>
 			</div>
 		</div>
@@ -476,17 +483,110 @@
 		</div>
 	</section>
 
+	<!-- Sección de Visualización de Datos -->
+	<section id="model-viz" class="py-20 gradient-bg">
+		<div class="container mx-auto px-6">
+			<div class="text-center mb-12">
+				<span class="text-blue-600 font-medium">Visualización de resultados</span>
+				<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Rendimiento del Modelo</h2>
+				<p class="max-w-2xl mx-auto text-gray-600">Consulta las métricas y gráficos de desempeño del modelo de
+					detección de células entrenado con YOLOv8.</p>
+			</div>
+			<div class="bg-white bg-opacity-90 rounded-xl shadow-lg p-8">
+				<div class="metrics-summary flex flex-wrap gap-8 justify-center mb-8">
+					<div class="metric-card text-center">
+						<div class="metric-value text-3xl font-bold text-blue-700 mb-1" id="mapValue">--</div>
+						<div class="metric-label text-gray-500">mAP@0.5:0.95</div>
+					</div>
+					<div class="metric-card text-center">
+						<div class="metric-value text-3xl font-bold text-blue-700 mb-1" id="map50Value">--</div>
+						<div class="metric-label text-gray-500">mAP@0.5</div>
+					</div>
+					<div class="metric-card text-center">
+						<div class="metric-value text-3xl font-bold text-blue-700 mb-1" id="precisionValue">--</div>
+						<div class="metric-label text-gray-500">Precisión Media</div>
+					</div>
+					<div class="metric-card text-center">
+						<div class="metric-value text-3xl font-bold text-blue-700 mb-1" id="recallValue">--</div>
+						<div class="metric-label text-gray-500">Recall Medio</div>
+					</div>
+				</div>
+				<div class="charts-container grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="chart-card bg-blue-50 rounded-lg p-6 shadow">
+						<h3 class="font-display text-lg font-bold text-blue-700 mb-2">Precisión y Recall por Clase</h3>
+						<canvas id="precisionRecallChart"></canvas>
+					</div>
+					<div class="chart-card bg-blue-50 rounded-lg p-6 shadow">
+						<h3 class="font-display text-lg font-bold text-blue-700 mb-2">mAP por Época</h3>
+						<canvas id="mapEpochChart"></canvas>
+					</div>
+					<div class="chart-card bg-blue-50 rounded-lg p-6 shadow md:col-span-2">
+						<h3 class="font-display text-lg font-bold text-blue-700 mb-2">Curva de Aprendizaje</h3>
+						<canvas id="learningCurveChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div id="loadingOverlay" class="hidden" style="display: none !important;">
+		<div class="spinner"></div>
+		<p>Analizando archivo...</p>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.1.1/dist/chartjs-chart-matrix.min.js"></script>
+	<script src="script.js"></script>
+
+
+	<!-- Sección de Colaboradores -->
+	<section id="colaboradores" class="bg-white ">
+		<div class="container mx-auto px-6">
+			<div class="text-center mb-12">
+				<span class="text-blue-600 font-medium">Colaboradores</span>
+				<h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Entidades colaboradoras</h2>
+				<p class="max-w-2xl mx-auto text-gray-600">Este proyecto cuenta con el apoyo y colaboración de las
+					siguientes entidades:</p>
+			</div>
+			<div class="flex flex-wrap justify-center items-center gap-10">
+				<a href="https://www.gobiernodecanarias.org/" target="_blank" class="flex flex-col items-center group">
+					<img src="img/gobierno_logo.png" alt="Gobierno de Canarias"
+						class="w-24 h-24 object-contain bg-white rounded-full p-2 mb-2 group-hover:scale-105 transition-transform" />
+					<span class="text-gray-700 font-medium text-sm group-hover:text-blue-600">Gobierno de
+						Canarias</span>
+				</a>
+				<a href="https://www3.gobiernodecanarias.org/medusa/edublog/cifpzonzamas/" target="_blank"
+					class="flex flex-col items-center group">
+					<img src="img/cifp_zonzamas_logo_redondeado.png" alt="CIFP Zonzamas"
+						class="w-24 h-24 object-contain bg-white rounded-full p-2 mb-2 group-hover:scale-105 transition-transform" />
+					<span class="text-gray-700 font-medium text-sm group-hover:text-blue-600">CIFP Zonzamas</span>
+				</a>
+				<a href="https://www.iesmagallanes.com/" target="_blank" class="flex flex-col items-center group">
+					<img src="img/iesmagallanes.avif" alt="IES Magallanes"
+						class="w-24 h-24 object-contain bg-white rounded-full p-2 mb-2 group-hover:scale-105 transition-transform" />
+					<span class="text-gray-700 font-medium text-sm group-hover:text-blue-600">IES Magallanes</span>
+				</a>
+				<a href="https://www.jmdcanarias.com/" target="_blank" class="flex flex-col items-center group">
+					<img src="img/jmd.avif" alt="JMD"
+						class="w-24 h-24 object-contain bg-white rounded-full p-2 mb-2 group-hover:scale-105 transition-transform" />
+					<span class="text-gray-700 font-medium text-sm group-hover:text-blue-600">JMD</span>
+				</a>
+				<a href="https://www.gobiernodecanarias.org/educacion/web/programas-cooperacion/redes-educativas/"
+					target="_blank" class="flex flex-col items-center group">
+					<img src="img/redescordinacion.avif" alt="Redes Coordinación"
+						class="w-24 h-24 object-contain bg-white rounded-full p-2 mb-2 group-hover:scale-105 transition-transform" />
+					<span class="text-gray-700 font-medium text-sm group-hover:text-blue-600">Redes Coordinación</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
 	<!-- Footer -->
 	<footer class="bg-gray-900 text-white py-12">
 		<div class="container mx-auto px-6">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				<div>
-					<div class="flex items-center mb-4 space-x-3">
-						<img src="img/logo_aiclid-sin-fondo.png" alt="AIclid Logo"
-							class="w-10 h-10 object-contain bg-white rounded-full p-1" />
-						<img src="img/cifp_zonzamas_logo_redondeado.png" alt="CIFP Zonzamas Logo"
-							class="w-10 h-10 object-contain bg-white rounded-full p-1" />
-					</div>
 					<h3
 						class="font-display text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent mb-2">
 						AIclid</h3>
@@ -523,30 +623,35 @@
 				</div>
 			</div>
 			<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-				<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 AIclid. Todos los derechos reservados.</p>
+				<p class="text-gray-500 text-sm text-center md:text-left">&copy; 2023 AIclid. Todos los derechos
+					reservados.</p>
+				<div class="flex space-x-4 mt-4 md:mt-0">
+					<a href="https://www.facebook.com/aiclid/" target="_blank"
+						class="text-gray-400 hover:text-blue-400 transition duration-300">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M22.675 0h-21.35C.596 0 0 .596 0 1.325v21.35C0 23.404.596 24 1.325 24h11.494v-9.294H9.691V11.25h3.128V8.418c0-3.1 1.892-4.788 4.655-4.788 1.325 0 2.465.098 2.798.142v3.24l-1.922.001c-1.505 0-1.794.715-1.794 1.764v2.313h3.588l-.467 3.456h-3.121V24h6.116c.729 0 1.325-.596 1.325-1.325v-21.35C24 .596 23.404 0 22.675 0z" />
+						</svg>
+					</a>
+					<a href="https://twitter.com/aiclid_" target="_blank"
+						class="text-gray-400 hover:text-blue-400 transition duration-300">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M23.954 4.569c-.885.392-1.83.654-2.825.775 1.014-.607 1.794-1.569 2.165-2.724-.951.564-2.005.974-3.127 1.195-.896-.955-2.173-1.548-3.594-1.548-2.717 0-4.923 2.206-4.923 4.923 0 .386.043.762.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.733-.666 1.577-.666 2.475 0 1.708.87 3.213 2.188 4.094-.807-.026-1.566-.247-2.228-.616v.061c0 2.384 1.693 4.373 3.946 4.826-.413.112-.849.171-1.293.171-.316 0-.623-.031-.923-.086.623 1.941 2.433 3.354 4.573 3.393-1.678 1.315-3.785 2.1-6.07 2.1-.394 0-.785-.023-1.17-.067 2.173 1.393 4.762 2.206 7.548 2.206 9.056 0 13.998-7.496 13.998-13.986 0-.213 0-.426-.015-.637.962-.695 1.798-1.562 2.457-2.549z" />
+						</svg>
+					</a>
+					<a href="https://www.instagram.com/aiclid_/" target="_blank"
+						class="text-gray-400 hover:text-blue-400 transition duration-300">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M12 2.163c3.214 0 3.583.012 4.854.071 1.293.061 2.18.263 2.688.438.743.246 1.283.54 1.84 1.045.557.506.799 1.086.799 1.845 0 1.77-.012 2.055-.071 2.774-.061 1.725-.263 2.872-.438 3.58-.246 1.293-.54 2.18-1.045 2.688-.506.743-1.086 1.283-1.845 1.283-1.77 0-2.055-.012-2.774-.071-1.725-.061-2.872-.263-3.58-.438-1.293-.246-2.18-.54-2.688-1.045-.743-.506-1.283-1.086-1.283-1.845 0-1.77.012-2.055.071-2.774.061-1.725.263-2.872.438-3.58.246-1.293.54-2.18 1.045-2.688.506-.743 1.086-1.283 1.845-1.283zM12 0C8.741 0 8.333.012 7.055.071 5.783.132 4.835.263 4.086.438 3.343.617 2.743.878 2.227 1.393.878 2.743.617 3.343.438 4.086.263 4.835.132 5.783.071 7.055.012 8.333 0 8.741 0 12s.012 3.667.071 4.945c.061 1.293.263 2.18.438 2.688.246.743.54 1.283 1.045 1.84.506.557 1.086.799 1.845.799 1.77 0 2.055-.012 2.774-.071 1.725-.061 2.872-.263 3.58-.438 1.293-.246 2.18-.54 2.688-1.045.743-.506 1.283-1.086 1.283-1.845 0-1.77-.012-2.055-.071-2.774-.061-1.725-.263-2.872-.438-3.58-.246-1.293-.54-2.18-1.045-2.688-.506-.743-1.086-1.283-1.845-1.283-1.77 0-2.055.012-2.774.071-1.725.061-2.872.263-3.58.438-1.293.246-2.18.54-2.688 1.045-.506.743-.799 1.086-.799 1.845 0 1.77.012 2.055.071 2.774.061 1.725.263 2.872.438 3.58.246 1.293.54 2.18 1.045 2.688.506.743 1.086 1.283 1.845 1.283z" />
+						</svg>
+					</a>
+				</div>
 			</div>
 		</div>
 	</footer>
 
-	<script>
-		// Simple JavaScript for FAQ toggle functionality
-		document.querySelectorAll('#faq button').forEach((button) => {
-			button.addEventListener('click', () => {
-				const answer = button.nextElementSibling;
-				const icon = button.querySelector('svg');
-
-				if (answer.style.maxHeight) {
-					answer.style.maxHeight = null;
-					icon.classList.remove('rotate-180');
-				} else {
-					answer.style.maxHeight = answer.scrollHeight + 'px';
-					icon.classList.add('rotate-180');
-				}
-			});
-		});
-
-		// Mobile menu toggle would go here
-	</script>
 </body>
 
 </html>
